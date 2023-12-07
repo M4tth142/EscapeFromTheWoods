@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace EscapeFromTheWoods
 {
@@ -8,16 +7,19 @@ namespace EscapeFromTheWoods
     {
         public DBWoodRecord(int woodID, int treeID, int x, int y)
         {
-            this.woodID = woodID;
-            this.treeID = treeID;
-            this.x = x;
-            this.y = y;
+            this.WoodID = woodID;
+            this.TreeID = treeID;
+            this.X = x;
+            this.Y = y;
         }
 
-        public int recordID { get; set; }
-        public int woodID { get; set; }
-        public int treeID { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public ObjectId Id { get; set; }
+
+        public int WoodID { get; set; }
+        public int TreeID { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }
