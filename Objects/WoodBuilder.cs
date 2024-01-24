@@ -5,18 +5,31 @@ using System.Text;
 namespace EscapeFromTheWoods
 {
     public static class WoodBuilder
-    {        
-        public static Wood GetWood(int size,Map map,string path,DBwriter db)
+    {
+        /// <summary>
+        /// place the amount of trees in the wood on random locations
+        /// </summary>
+        /// <param name="size">amount of trees</param>
+        /// <param name="map">wood dimensions</param>
+        /// <param name="path">path where bitmaps will be stored</param>
+        /// <param name="db">databse reference</param>
+        /// <returns> returns a wood </returns>
+        /// TODO: rename "size" to "amountOfTrees"
+        public static Wood GetWood(int size, Map map, string path, DBwriter db)
         {
-            Random r = new Random(100);
+            Random random = new Random(100);
             List<Tree> trees = new List<Tree>();
             int n = 0;
-            while(n<size)
+            while (n < size)
             {
-                Tree t = new Tree(IDgenerator.GetTreeID(),r.Next(map.xmin,map.xmax),r.Next(map.ymin,map.ymax));
-                if (!trees.Contains(t)) { trees.Add(t); n++; }
+                Tree t = new Tree(IDgenerator.GetTreeID(), random.Next(map.xmin, map.xmax), random.Next(map.ymin, map.ymax));
+                if (!trees.Contains(t))
+                {
+                    trees.Add(t);
+                    n++;
+                }
             }
-            Wood w = new Wood(IDgenerator.GetWoodID(),trees,map,path,db);
+            Wood w = new Wood(IDgenerator.GetWoodID(), trees, map, path, db);
             return w;
         }
     }

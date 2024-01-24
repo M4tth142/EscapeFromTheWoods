@@ -4,6 +4,9 @@ using System.Text;
 
 namespace EscapeFromTheWoods
 {
+    /// <summary>
+    /// A map is defined with a minimum and maximum value for x and y
+    /// </summary>
     public class Map
     {
         public Map(int xmin, int xmax, int ymin, int ymax)

@@ -6,6 +6,9 @@ namespace EscapeFromTheWoods
 {
     public static class IDgenerator
     {
+        /// <summary>
+        /// generates a simple ID for trees, monkeys and woods
+        /// </summary>
         private static int treeID = 0;
         private static int woodID = 0;
         private static int monkeyID = 0;
